@@ -1,0 +1,33 @@
+<!-- Prototype 7b: bridge Python/Jinja data into browser JavaScript safely. -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<canvas id="categoryChart"></canvas>
+<canvas id="dailyChart"></canvas>
+
+<script>
+  const categoryLabels = {{ (cat_labels or []) | tojson }};
+  const categoryValues = {{ (cat_values or []) | tojson }};
+  const dayLabels = {{ (day_labels or []) | tojson }};
+  const dayValues = {{ (day_values or []) | tojson }};
+
+  new Chart(document.getElementById("categoryChart"), {
+    type: "pie",
+    data: {
+      labels: categoryLabels,
+      datasets: [{ data: categoryValues }],
+    },
+  });
+
+  new Chart(document.getElementById("dailyChart"), {
+    type: "bar",
+    data: {
+      labels: dayLabels,
+      datasets: [{ label: "Total", data: dayValues }],
+    },
+    options: {
+      scales: {
+        y: { beginAtZero: true },
+      },
+    },
+  });
+</script>
