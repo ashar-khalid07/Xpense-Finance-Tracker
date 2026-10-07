@@ -22,9 +22,6 @@ Xpense is a personal expense tracker I built with Flask. It lets you record expe
 - Chart.js
 - Tailwind CSS via CDN
 
-## Screenshot
-
-A screenshot of the dashboard will be added here.
 
 ## Getting Started
 
