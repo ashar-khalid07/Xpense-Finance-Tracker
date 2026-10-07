@@ -1,16 +1,16 @@
-# Xpense – Personal Expense Tracker
+# Xpense
 
-Xpense is a Flask web application for recording personal expenses, filtering spending data and visualising totals. It stores expense records in SQLite through Flask-SQLAlchemy and renders category and daily-spend charts with Chart.js.
+Xpense is a personal expense tracker I built with Flask. It lets you record expenses, filter spending by date or category, view totals and charts, and export the current view to CSV.
 
 ## Features
 
-- Add, edit and delete expenses with server-side validation
+- Add, edit and delete expenses
 - Store description, amount, category and date in SQLite
-- Filter by date range and category
-- Recalculate filtered totals and chart data from the same query conditions
-- Category spending pie chart and daily spending bar chart
-- Export the currently filtered expense data to CSV
-- Flash messages for validation errors and successful changes
+- Filter expenses by date range and category
+- Show totals for the current filtered view
+- Visualise spending by category and by day
+- Export filtered expenses to CSV
+- Validate form input on the server
 
 ## Technologies
 
@@ -18,17 +18,17 @@ Xpense is a Flask web application for recording personal expenses, filtering spe
 - Flask
 - Flask-SQLAlchemy / SQLAlchemy
 - SQLite
-- Jinja templates
+- Jinja
 - Chart.js
 - Tailwind CSS via CDN
 
-## Screenshots
+## Screenshot
 
-No generated or mock screenshot is included. Run the application locally to view the current interface.
+A screenshot of the dashboard will be added here.
 
 ## Getting Started
 
-Clone the repository, create a virtual environment and install the declared dependencies:
+Clone the repository, create a virtual environment and install the dependencies:
 
 ```bash
 python -m venv .venv
@@ -52,30 +52,31 @@ python app.py
 
 Then open `http://127.0.0.1:5000`.
 
-The database is created automatically at `instance/expenses.db`. The application generates an ephemeral Flask secret key when `SECRET_KEY` is not supplied. For a persistent deployment, set `SECRET_KEY` in the environment. Flask debug mode is off by default; set `FLASK_DEBUG=1` only for local development.
+The database is created automatically at `instance/expenses.db`.
 
 ## Project Structure
 
 ```text
-app.py                    Flask routes, validation, model and queries
-templates/                Jinja templates for the dashboard and edit form
-testing/                  Manual test plan and representative test data
-development-prototypes/   Supplementary reference prototypes and notes
-requirements.txt          Python dependencies
+app.py             Flask routes, validation, model and queries
+templates/         Jinja templates for the dashboard and edit form
+testing/           Manual test plan and representative test data
+requirements.txt   Python dependencies
 ```
-
-The numbered files under `development-prototypes/` are supplementary learning/reference material retained with the project. They should not be interpreted as reconstructed Git history or historical commits from the original development period.
 
 ## Testing
 
-`testing/11_test_plan.md` contains a manual functional test plan covering start-up, validation, sorting, filtering, editing, deletion, CSV export and decimal currency behaviour. `testing/10_seed_test_data.py` contains representative data and expected totals for exercising those cases.
+`testing/11_test_plan.md` contains a manual test plan covering start-up, validation, filtering, editing, deletion, CSV export and decimal currency behaviour.
 
-These are manual testing resources; they are not an automated test suite.
+`testing/10_seed_test_data.py` contains representative data and expected totals for checking those cases.
 
-## What I Worked On
+These are manual testing resources rather than an automated test suite.
 
-This was an individual project. My implementation work represented in this repository includes the Flask routes, SQLAlchemy expense model, validation, CRUD operations, filter pipeline, SQL aggregation for charts, CSV export and the Jinja-based interface.
+## What I Built
 
-## Further Improvements
+I built the Flask routes, SQLAlchemy expense model, validation, CRUD operations, filtering, chart data, CSV export and the Jinja-based interface.
 
-Potential future improvements include adding automated tests, CSRF protection for state-changing forms, database migrations, pagination for larger datasets and user accounts if the application were expanded beyond a single-user local tool.
+## Possible Next Steps
+
+- Add automated tests
+- Add CSRF protection
+- Add pagination if the amount of stored data grows
