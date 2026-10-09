@@ -4,6 +4,3 @@ __pycache__/
 *.pyc
 instance/*.db
 .env
-.vscode/
-.idea/
-.DS_Store

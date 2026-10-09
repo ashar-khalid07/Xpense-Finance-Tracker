@@ -3,7 +3,6 @@ from __future__ import annotations
 import csv
 import io
 import os
-import secrets
 from datetime import date as dt_date, datetime
 from decimal import Decimal, InvalidOperation
 
@@ -21,7 +20,7 @@ from sqlalchemy import func
 
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY") or secrets.token_hex(32)
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-secret-change-me")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///expenses.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
@@ -288,4 +287,4 @@ with app.app_context():
 
 
 if __name__ == "__main__":
-    app.run(debug=os.environ.get("FLASK_DEBUG") == "1")
+    app.run(debug=True)
