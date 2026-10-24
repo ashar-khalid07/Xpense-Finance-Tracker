@@ -1,16 +1,41 @@
 # Xpense
 
-Xpense is a personal expense tracker I built with Flask. It lets you record expenses, filter spending by date or category, view totals and charts, and export the current view to CSV.
+Xpense is a personal expense tracker I built with Flask. It lets you record expenses, filter spending by date or category, view totals and charts, edit existing entries and export the current view to CSV.
 
-## Features
+**Python · Flask · SQLAlchemy · SQLite · Chart.js · Jinja**
 
-- Add, edit and delete expenses
-- Store description, amount, category and date in SQLite
-- Filter expenses by date range and category
-- Show totals for the current filtered view
-- Visualise spending by category and by day
-- Export filtered expenses to CSV
-- Validate form input on the server
+## Screenshots
+
+### Dashboard
+
+![Xpense dashboard](screenshots/dashboard.png)
+
+### Spending charts and transaction history
+
+![Xpense charts and transaction history](screenshots/transactions.png)
+
+### Edit expense
+
+![Xpense edit expense form](screenshots/edit-expense.png)
+
+## Main features
+
+- add, edit and delete expenses
+- store description, amount, category and date in SQLite
+- filter expenses by date range and category
+- calculate totals for the current filtered view
+- visualise spending by category and by day
+- export filtered expenses to CSV
+- validate form input on the server
+- display success and error messages after actions
+
+## How it works
+
+The application uses Flask for the routes and request handling, with Flask-SQLAlchemy for storing expenses in a SQLite database.
+
+The same filters are applied to the expense table, totals, chart queries and CSV export so the different parts of the dashboard stay consistent with the selected view.
+
+Chart.js is used to display spending by category and daily spending, while the interface is rendered with Jinja templates.
 
 ## Technologies
 
@@ -22,10 +47,9 @@ Xpense is a personal expense tracker I built with Flask. It lets you record expe
 - Chart.js
 - Tailwind CSS via CDN
 
+## Getting started
 
-## Getting Started
-
-Clone the repository, create a virtual environment and install the dependencies:
+Create a virtual environment and install the dependencies:
 
 ```bash
 python -m venv .venv
@@ -47,17 +71,22 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Then open `http://127.0.0.1:5000`.
+Then open:
+
+```text
+http://127.0.0.1:5000
+```
 
 The database is created automatically at `instance/expenses.db`.
 
-## Project Structure
+## Project structure
 
 ```text
 app.py             Flask routes, validation, model and queries
 templates/         Jinja templates for the dashboard and edit form
 testing/           Manual test plan and representative test data
 requirements.txt   Python dependencies
+screenshots/       README screenshots
 ```
 
 ## Testing
@@ -68,12 +97,12 @@ requirements.txt   Python dependencies
 
 These are manual testing resources rather than an automated test suite.
 
-## What I Built
+## What I built
 
-I built the Flask routes, SQLAlchemy expense model, validation, CRUD operations, filtering, chart data, CSV export and the Jinja-based interface.
+I built the Flask routes, SQLAlchemy expense model, validation, CRUD operations, filtering, chart data, CSV export and Jinja-based interface.
 
-## Possible Next Steps
+## Possible next steps
 
-- Add automated tests
-- Add CSRF protection
-- Add pagination if the amount of stored data grows
+- add automated tests
+- add CSRF protection
+- add pagination if the amount of stored data grows
