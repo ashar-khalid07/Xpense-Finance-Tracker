@@ -91,11 +91,31 @@ screenshots/       README screenshots
 
 ## Testing
 
+Xpense now has both manual and automated testing.
+
 `testing/11_test_plan.md` contains a manual test plan covering start-up, validation, filtering, editing, deletion, CSV export and decimal currency behaviour.
 
 `testing/10_seed_test_data.py` contains representative data and expected totals for checking those cases.
 
-These are manual testing resources rather than an automated test suite.
+`tests/test_validation.py` contains automated `unittest` tests for:
+
+- valid and invalid date parsing
+- missing required expense fields
+- invalid categories
+- non-numeric, zero and negative amounts
+- invalid dates
+- reversed date filters
+- unknown category filters
+
+The automated validation tests are run on every push and pull request through GitHub Actions.
+
+### AI-assisted testing exercise
+
+I used ChatGPT to propose a small set of automated tests for Xpense's existing input-validation logic, then reviewed the suggestions against the application before adding them.
+
+I rejected or changed suggestions that did not match the program's actual behaviour. For example, a blank date is valid in Xpense because the application defaults it to today's date, so I did not add a test that incorrectly expected a blank date to be rejected. I also kept this first automated suite focused on validation rather than mixing it with database-write tests.
+
+The final validation suite runs successfully in GitHub Actions.
 
 ## What I built
 
